@@ -23,9 +23,8 @@ public class Payment {
 
     Long OrderId;
 
-    public Payment(Long id, double amount, PaymentStatus paymentStatus, PaymentRouting paymentRouting, PaymentMethod paymentMethod, Long orderId)
+    public Payment(double amount, PaymentStatus paymentStatus, PaymentRouting paymentRouting, PaymentMethod paymentMethod, Long orderId)
     throws IllegalArgumentException {
-        this.id = id;
         this.amount = amount;
 
         this.paymentStatus = paymentStatus;
