@@ -3,7 +3,6 @@ package com.example.dbcsassignmentpaymentservice.model;
 import com.example.dbcsassignmentpaymentservice.model.paymentdata.PaymentMethod;
 import com.example.dbcsassignmentpaymentservice.model.paymentdata.PaymentRouting;
 import com.example.dbcsassignmentpaymentservice.model.paymentdata.PaymentStatus;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
@@ -17,16 +16,17 @@ public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    private double amount;
     PaymentStatus paymentStatus;
     PaymentRouting paymentRouting;
     PaymentMethod paymentMethod;
 
     Long OrderId;
 
-    public Payment(Long id, PaymentStatus paymentStatus, PaymentRouting paymentRouting, PaymentMethod paymentMethod, Long orderId)
+    public Payment(Long id, double amount, PaymentStatus paymentStatus, PaymentRouting paymentRouting, PaymentMethod paymentMethod, Long orderId)
     throws IllegalArgumentException {
         this.id = id;
+        this.amount = amount;
 
         this.paymentStatus = paymentStatus;
         if(paymentRouting.isAvailable())
@@ -79,6 +79,14 @@ public class Payment {
             this.paymentMethod = paymentMethod;
         else
             throw new IllegalArgumentException("Payment method is not available");
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     public void setOrderId(Long orderId) {

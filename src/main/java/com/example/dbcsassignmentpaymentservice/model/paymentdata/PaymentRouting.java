@@ -8,7 +8,7 @@ public enum PaymentRouting {
     EN_GROSS,
     TEST;
 
-    @Value("${spring.profiles.active}")
+    @Value("${spring.profiles.active:}")
     private String activeProfile;
 
     public Boolean isAvailable() {
